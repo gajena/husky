@@ -29,7 +29,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <xacro:arg name="laser_ust10_front_prefix"  default="$(optenv HUSKY_UST10_PREFIX front)" />
   <xacro:arg name="laser_ust10_front_parent"  default="$(optenv HUSKY_UST10_PARENT top_plate_link)" />
   <xacro:arg name="laser_ust10_front_topic"   default="$(optenv HUSKY_UST10_TOPIC scan)" />
-  <xacro:arg name="laser_ust10_front_xyz"     default="$(optenv HUSKY_UST10_XYZ 0.2 0.0 0.1)" />
+  <xacro:arg name="laser_ust10_front_xyz"     default="$(optenv HUSKY_UST10_XYZ 0.2 0.0 0.3)" />
   <xacro:arg name="laser_ust10_front_rpy"     default="$(optenv HUSKY_UST10_RPY 0 0 0)" />
 
 
@@ -140,13 +140,13 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     Add front and back hokuyo UST10 Lidars
   -->
   <xacro:if value="$(arg laser_ust10_front_enabled)">
-    <xacro:hokuyo_ust10_mount topic="$(arg laser_ust10_front_topic)" prefix="$(arg laser_ust10_front_prefix)" parent_link="$(arg laser_ust10_front_parent)" min_angle="0" max_angle="6.28" robot_namespace="$(arg robot_namespace)">
+    <xacro:hokuyo_ust10_mount topic="$(arg laser_ust10_front_topic)" prefix="$(arg laser_ust10_front_prefix)" parent_link="$(arg laser_ust10_front_parent)" min_angle="-3.1" max_angle="3.1" min_range="0.6" robot_namespace="$(arg robot_namespace)">
       <origin xyz="$(arg laser_ust10_front_xyz)" rpy="$(arg laser_ust10_front_rpy) " />
       </xacro:hokuyo_ust10_mount>
   </xacro:if>
 
   <xacro:if value="$(arg laser_ust10_rear_enabled)">
-    <xacro:hokuyo_ust10_mount topic="$(arg laser_ust10_rear_topic)" prefix="$(arg laser_ust10_rear_prefix)" parent_link="$(arg laser_ust10_rear_parent)" min_angle="1." max_angle="-1." robot_namespace="$(arg robot_namespace)">
+    <xacro:hokuyo_ust10_mount topic="$(arg laser_ust10_rear_topic)" prefix="$(arg laser_ust10_rear_prefix)" parent_link="$(arg laser_ust10_rear_parent)" min_angle="1." max_angle="-1." min_range="0.25" robot_namespace="$(arg robot_namespace)">
       <origin xyz="$(arg laser_ust10_rear_xyz)" rpy="$(arg laser_ust10_rear_rpy)" />
     </xacro:hokuyo_ust10_mount>
   </xacro:if>
